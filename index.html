@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>PONLE FRENO A LA INSEGURIDAD</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+
+<!-- VENTANA EMERGENTE INICIAL -->
+<div id="modal">
+  <div id="modal-content">
+    <h2>COMO USAR ESTA APLICACIÓN</h2>
+    <p style="text-align: left; line-height: 1.6;">
+      1. Ubica el punto en el mapa.<br>
+      2. Selecciona el tipo de delito.<br>
+      3. Realiza una breve descripción.<br>
+      4. Coloca <strong>Guardar</strong>.<br>
+      5. Si quieres, puedes descargar el archivo CSV.
+    </p>
+    <button onclick="cerrarModal()">Cerrar</button>
+  </div>
+</div>
+
+<div id="titulo">PONLE FRENO A LA INSEGURIDAD</div>
+<div id="leyenda">Denuncia actividades Ilícitas</div>
+
+<div id="contenedor">
+  <div id="map"></div>
+
+  <div id="formulario">
+    <label>Tipo de denuncia:
+      <select id="tipo">
+        <option>Robo</option>
+        <option>Accidente</option>
+        <option>Disturbios</option>
+        <option>Venta de droga</option>
+      </select>
+    </label>
+    <label>Resumen:
+      <textarea id="resumen" rows="3"></textarea>
+    </label>
+    <button onclick="guardarDenuncia()">Guardar denuncia</button>
+    <button onclick="descargarCSV()">Descargar CSV</button>
+    <button onclick="seleccionarTodos()">Seleccionar Todos</button>
+  </div>
+</div>
+
+<div class="scrollable">
+  <table id="tabla">
+    <thead>
+      <tr>
+        <th class="select-col"><input type="checkbox" onclick="seleccionarTodos(this)"></th>
+        <th>Tipo</th>
+        <th>Resumen</th>
+        <th>Fecha</th>
+        <th>Latitud</th>
+        <th>Longitud</th>
+        <th>Ir</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
